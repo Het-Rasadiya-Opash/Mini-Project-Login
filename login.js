@@ -4,19 +4,16 @@ var form = document.querySelector(".form");
 var username = document.getElementById("username");
 var phoneNumber = document.getElementById("phone");
 var bod = document.getElementById("bod");
-var emailPattern = new RegExp(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
-var phonePattern = new RegExp(/^\d{10}$/);
+var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+var phonePattern = /^\d{10}$/;
 form.addEventListener("submit", function (e) {
     e.preventDefault();
-    var emailValue = email.value;
+    var emailValue = email.value.trim();
     var passwordValue = password.value;
-    var phoneValue = phoneNumber.value;
-    var usernameValue = username.value;
-    if (emailValue === "" ||
-        passwordValue === "" ||
-        phoneValue === "" ||
-        usernameValue === "") {
-        alert("Please fill in all fields...!");
+    var phoneValue = phoneNumber.value.trim();
+    var usernameValue = username.value.trim();
+    if (!emailValue || !passwordValue || !phoneValue || !usernameValue) {
+        alert("Please fill in all fields!");
         return;
     }
     if (passwordValue.length < 6) {
@@ -24,13 +21,13 @@ form.addEventListener("submit", function (e) {
         return;
     }
     if (!emailPattern.test(emailValue)) {
-        alert("Please Provide valid email...");
+        alert("Please provide a valid email.");
         return;
     }
     if (!phonePattern.test(phoneValue)) {
-        alert("Enter Valid Phone Number...");
+        alert("Enter a valid 10-digit phone number.");
         return;
     }
-    alert("Login Successful...");
+    alert("Login Successful.");
     form.submit();
 });

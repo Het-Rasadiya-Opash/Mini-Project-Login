@@ -5,42 +5,39 @@ const username = document.getElementById("username") as HTMLInputElement;
 const phoneNumber = document.getElementById("phone") as HTMLInputElement;
 const bod = document.getElementById("bod") as HTMLInputElement;
 
-const emailPattern = new RegExp(
-  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-);
 
-const phonePattern = new RegExp(/^\d{10}$/);
+const emailPattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const phonePattern: RegExp = /^\d{10}$/;
 
-form.addEventListener("submit", (e: Event) => {
+
+form.addEventListener("submit", (e: SubmitEvent): void => {
   e.preventDefault();
 
-  const emailValue = email.value;
+  const emailValue = email.value.trim();
   const passwordValue = password.value;
-  const phoneValue = phoneNumber.value;
-  const usernameValue = username.value;
+  const phoneValue = phoneNumber.value.trim();
+  const usernameValue = username.value.trim();
 
-  if (
-    emailValue === "" ||
-    passwordValue === "" ||
-    phoneValue === "" ||
-    usernameValue === ""
-  ) {
-    alert("Please fill in all fields...!");
+  if (!emailValue || !passwordValue || !phoneValue || !usernameValue) {
+    alert("Please fill in all fields!");
     return;
   }
+
   if (passwordValue.length < 6) {
     alert("Password must be at least 6 characters long.");
     return;
   }
+
   if (!emailPattern.test(emailValue)) {
-    alert("Please Provide valid email...");
-    return;
-  }
-  if (!phonePattern.test(phoneValue)) {
-    alert("Enter Valid Phone Number...");
+    alert("Please provide a valid email.");
     return;
   }
 
-  alert("Login Successful...");
+  if (!phonePattern.test(phoneValue)) {
+    alert("Enter a valid 10-digit phone number.");
+    return;
+  }
+
+  alert("Login Successful.");
   form.submit();
 });
