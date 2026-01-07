@@ -3,7 +3,6 @@ const password = document.getElementById("password") as HTMLInputElement;
 const form = document.querySelector(".form") as HTMLFormElement;
 const username = document.getElementById("username") as HTMLInputElement;
 const phoneNumber = document.getElementById("phone") as HTMLInputElement;
-const bod = document.getElementById("bod") as HTMLInputElement;
 
 
 const emailPattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

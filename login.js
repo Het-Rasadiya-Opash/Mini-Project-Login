@@ -3,7 +3,6 @@ var password = document.getElementById("password");
 var form = document.querySelector(".form");
 var username = document.getElementById("username");
 var phoneNumber = document.getElementById("phone");
-var bod = document.getElementById("bod");
 var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 var phonePattern = /^\d{10}$/;
 form.addEventListener("submit", function (e) {
